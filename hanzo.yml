@@ -1,0 +1,11 @@
+# The Firebase JS SDK — a lerna/yarn monorepo of ~40 published packages.
+# The gate is the project's own build: every @firebase/* package plus the
+# `firebase` umbrella, each compiled with its own tsc/rollup config. A type
+# error or a broken export map in any package fails it.
+#
+# The suites are not here: they run against browsers and against live emulator
+# instances (firestore, database, auth), which is a fixture this runner has not
+# got and which would make the gate report on the emulator, not the SDK.
+test:
+  - name: build
+    run: yarn install --frozen-lockfile && yarn build
